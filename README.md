@@ -1,6 +1,6 @@
 # Threat Detection Application
 
-Here were uploading scanned images from a scanner which we usually find at the airport, companies, colleges, etc. We'll need basic 
+Welcome to Threat Detection App! Here we're uploading scanned images from a scanner which we usually find at the airport, companies, colleges, etc. We'll need basic 
 
 ## Steps to start app
 
