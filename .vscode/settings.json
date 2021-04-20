@@ -1,0 +1,12 @@
+{
+    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "sqltools.connections": [
+        {
+            "database": ".\\BaggageAI Interview/solution/backend/app.db",
+            "dialect": "SQLite",
+            "name": "App"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
