@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+
+<div class="jumbotron text-center" style="width: 75em;margin-left: 5em;">
+  <h1>Show logs</h1>
+</div>
+    <div class="d-flex justify-content-center text-center" style="width: 70em;margin-left: 10em;">
+        <div class="col">
+        <div>
+            <form class="form-horizontal" enctype="multipart/form-data" method="POST">
+                <div class="form-group row">
+                  <label class="control-label" for="start_date">Select start date:</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" id="start_date" required placeholder="Select File" name="start_date">
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label" for="end_date">Select end date:</label>
+                    <div class="col-sm-10">
+                      <input type="date"  class="form-control" id="end_date" required placeholder="Select File" name="end_date">
+                        
+                    </div>
+                  </div>
+                <div class="form-group">        
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <br>
+            <div>
+        {%if data|length >0 %}
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <th style="text-align: center">Sr No.</th>
+                <th style="text-align: center">Image Name</th>
+                <th style="text-align: center">Object Name</th>
+                <th style="text-align: center">x_min</th>
+                <th style="text-align: center">y_min</th>
+                <th style="text-align: center">x_max</th>
+                <th style="text-align: center">y_max</th>
+                <th style="text-align: center">Timestamp</th>
+            </thead>
+            <tbody>
+                {%for i in data%}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{i[0]}}</td>
+                    <td>{{i[1]}}</td>
+                    <td>{{i[2]}}</td>
+                    <td>{{i[3]}}</td>
+                    <td>{{i[4]}}</td>
+                    <td>{{i[5]}}</td>
+                    <td>{{i[6].strftime("%d-%m-%Y %I:%M:%S %p")}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        {%endif%}
+        </div>
+        </div>
+<script>
+        function getDate(){
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+        
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById('start_date').setAttribute("max",today );
+            document.getElementById('end_date').setAttribute("max",today );
+        }
+        getDate()
+</script>
+                
+  </div>    
+</div>
+
+
+{%endblock%}
